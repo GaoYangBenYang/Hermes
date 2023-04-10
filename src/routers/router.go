@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"GoSearch_BackEnd/controllers"
+	"ProblemFocus_Backend/src/controllers"
 
 	"github.com/astaxie/beego"
 )

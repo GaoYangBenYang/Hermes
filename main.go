@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "GoSearch_BackEnd/routers"
+	_ "ProblemFocus_Backend/src/routers"
 
 	"github.com/astaxie/beego"
 )

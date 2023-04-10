@@ -1,4 +1,4 @@
-module GoSearch_BackEnd
+module ProblemFocus_Backend
 
 go 1.19
 

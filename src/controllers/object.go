@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"GoSearch_BackEnd/models"
+	"ProblemFocus_Backend/src/models"
 	"encoding/json"
 
 	"github.com/astaxie/beego"
