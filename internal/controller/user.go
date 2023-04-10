@@ -1,4 +1,4 @@
-package controllers
+package controller
 
 import (
 	"ProblemFocus_Backend/internal/model"
@@ -19,9 +19,9 @@ type UserController struct {
 // @Failure 403 body is empty
 // @router / [post]
 func (u *UserController) Post() {
-	var user models.User
+	var user model.User
 	json.Unmarshal(u.Ctx.Input.RequestBody, &user)
-	uid := models.AddUser(user)
+	uid := model.AddUser(user)
 	u.Data["json"] = map[string]string{"uid": uid}
 	u.ServeJSON()
 }
@@ -31,7 +31,7 @@ func (u *UserController) Post() {
 // @Success 200 {object} models.User
 // @router / [get]
 func (u *UserController) GetAll() {
-	users := models.GetAllUsers()
+	users := model.GetAllUsers()
 	u.Data["json"] = users
 	u.ServeJSON()
 }
@@ -45,7 +45,7 @@ func (u *UserController) GetAll() {
 func (u *UserController) Get() {
 	uid := u.GetString(":uid")
 	if uid != "" {
-		user, err := models.GetUser(uid)
+		user, err := model.GetUser(uid)
 		if err != nil {
 			u.Data["json"] = err.Error()
 		} else {
@@ -65,9 +65,9 @@ func (u *UserController) Get() {
 func (u *UserController) Put() {
 	uid := u.GetString(":uid")
 	if uid != "" {
-		var user models.User
+		var user model.User
 		json.Unmarshal(u.Ctx.Input.RequestBody, &user)
-		uu, err := models.UpdateUser(uid, &user)
+		uu, err := model.UpdateUser(uid, &user)
 		if err != nil {
 			u.Data["json"] = err.Error()
 		} else {
@@ -85,7 +85,7 @@ func (u *UserController) Put() {
 // @router /:uid [delete]
 func (u *UserController) Delete() {
 	uid := u.GetString(":uid")
-	models.DeleteUser(uid)
+	model.DeleteUser(uid)
 	u.Data["json"] = "delete success!"
 	u.ServeJSON()
 }
@@ -100,7 +100,7 @@ func (u *UserController) Delete() {
 func (u *UserController) Login() {
 	username := u.GetString("username")
 	password := u.GetString("password")
-	if models.Login(username, password) {
+	if model.Login(username, password) {
 		u.Data["json"] = "login success"
 	} else {
 		u.Data["json"] = "user not exist"
