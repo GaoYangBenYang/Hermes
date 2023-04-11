@@ -1,86 +1,45 @@
 package model
 
 import (
-	"errors"
-	"strconv"
+	"ProblemFocus_Backend/pkg/dataBase/mysql"
 	"time"
-)
 
-var (
-	UserList map[string]*User
+	"github.com/astaxie/beego/orm"
 )
 
 func init() {
-	UserList = make(map[string]*User)
-	u := User{"user_11111", "astaxie", "11111", Profile{"male", 20, "Singapore", "astaxie@gmail.com"}}
-	UserList["user_11111"] = &u
+	//注册模型 相当于在数据库中自动建表
+	orm.RegisterModelWithPrefix("table_", new(User))
 }
 
+// Comment: 用户表
 type User struct {
-	Id       string
-	Username string
-	Password string
-	Profile  Profile
+	// Comment: 用户ID,唯一标识符,自增长整数类型
+	ID int `db:"user_id"`
+	// Comment: 用户名，字符串类型，不可重复
+	Username string `db:"username"`
+	// Comment: 密码，字符串类型，加密存储
+	Password string `db:"password"`
+	// Comment: 电子邮件地址，字符串类型
+	Email *string `db:"email"`
+	// Comment: 电话号码，字符串类型
+	PhoneNumber *string `db:"phone_number"`
+	// Comment: 头像,字符串类型,存储头像的URL地址
+	Avatar *string `db:"avatar"`
+	// Comment: 注册时间，日期时间类型
+	RegistrationTime *time.Time `db:"registration_time"`
+	// Comment: 用户更新时间，可为空
+	UpdateTime *time.Time `db:"update_time"`
 }
 
-type Profile struct {
-	Gender  string
-	Age     int
-	Address string
-	Email   string
-}
 
-func AddUser(u User) string {
-	u.Id = "user_" + strconv.FormatInt(time.Now().UnixNano(), 10)
-	UserList[u.Id] = &u
-	return u.Id
-}
-
-func GetUser(uid string) (u *User, err error) {
-	if u, ok := UserList[uid]; ok {
-		return u, nil
+func GetAllUser() ( []User , error){
+	o := orm.NewOrm()
+	var userSlice []User
+	_ , err := o.Raw(mysql.SelectAllUserSQL).QueryRows(&userSlice)
+	if err == nil {
+		return userSlice, nil
+	} else {
+		return nil, err
 	}
-	return nil, errors.New("User not exists")
-}
-
-func GetAllUsers() map[string]*User {
-	return UserList
-}
-
-func UpdateUser(uid string, uu *User) (a *User, err error) {
-	if u, ok := UserList[uid]; ok {
-		if uu.Username != "" {
-			u.Username = uu.Username
-		}
-		if uu.Password != "" {
-			u.Password = uu.Password
-		}
-		if uu.Profile.Age != 0 {
-			u.Profile.Age = uu.Profile.Age
-		}
-		if uu.Profile.Address != "" {
-			u.Profile.Address = uu.Profile.Address
-		}
-		if uu.Profile.Gender != "" {
-			u.Profile.Gender = uu.Profile.Gender
-		}
-		if uu.Profile.Email != "" {
-			u.Profile.Email = uu.Profile.Email
-		}
-		return u, nil
-	}
-	return nil, errors.New("User Not Exist")
-}
-
-func Login(username, password string) bool {
-	for _, u := range UserList {
-		if u.Username == username && u.Password == password {
-			return true
-		}
-	}
-	return false
-}
-
-func DeleteUser(uid string) {
-	delete(UserList, uid)
 }
