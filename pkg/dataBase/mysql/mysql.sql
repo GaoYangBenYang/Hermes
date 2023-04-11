@@ -6,7 +6,7 @@ CREATE DATABASE ProblemFocus
 -- 1.用户模块
 CREATE TABLE user (
   user_id INT AUTO_INCREMENT PRIMARY KEY COMMENT "用户ID,唯一标识符,自增长整数类型",
-  username VARCHAR(50) NOT NULL UNIQUE COMMENT "用户名，字符串类型，不可重复",
+  user_name VARCHAR(50) NOT NULL UNIQUE COMMENT "用户名，字符串类型，不可重复",
   password VARCHAR(255) NOT NULL COMMENT "密码，字符串类型，加密存储",
   email VARCHAR(255) COMMENT "电子邮件地址，字符串类型",
   phone_number VARCHAR(20) COMMENT "电话号码，字符串类型",
