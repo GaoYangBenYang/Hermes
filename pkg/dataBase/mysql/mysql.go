@@ -25,6 +25,6 @@ func InitMySQLClient() {
 const (
 	//查询所有用户信息
 	SelectAllUserSQL = "select * from user"
-	//根据电话号码查询用户信息
-	SelectUserInfoByPhoneNumberSQL = ""
+	//注册用户
+	InsertUser = "insert "
 )

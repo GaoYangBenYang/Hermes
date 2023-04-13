@@ -1,4 +1,4 @@
--- Active: 1679220809744@@127.0.0.1@3306@problemfocus
+-- Active: 1681287635940@@127.0.0.1@3306@problemfocus
 
 CREATE DATABASE ProblemFocus
     DEFAULT CHARACTER SET = 'utf8mb4';
@@ -6,13 +6,15 @@ CREATE DATABASE ProblemFocus
 -- 1.用户模块
 CREATE TABLE user (
   user_id INT AUTO_INCREMENT PRIMARY KEY COMMENT "用户ID,唯一标识符,自增长整数类型",
+  uuid CHAR(36) COMMENT "用户唯一标识符号",
   user_name VARCHAR(50) NOT NULL UNIQUE COMMENT "用户名，字符串类型，不可重复",
   password VARCHAR(255) NOT NULL COMMENT "密码，字符串类型，加密存储",
   email VARCHAR(255) COMMENT "电子邮件地址，字符串类型",
   phone_number VARCHAR(20) COMMENT "电话号码，字符串类型",
   avatar VARCHAR(255) COMMENT "头像,字符串类型,存储头像的URL地址",
   registration_time DATETIME COMMENT "注册时间，日期时间类型",
-  update_time DATETIME COMMENT "用户更新时间，可为空"
+  update_time DATETIME COMMENT "用户更新时间，可为空",
+  user_state INT(1) NOT NULL DEFAULT '1' COMMENT '用户账号状态(1正常0注销)' 
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT "用户表";
 
 -- 2.提问模块
