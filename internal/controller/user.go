@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"ProblemFocus_Backend/internal/model"
-	"ProblemFocus_Backend/pkg/utils"
+	"problemfocus_backend_user/internal/model"
+	"problemfocus_backend_user/pkg/utils"
 
 	"github.com/astaxie/beego"
 )

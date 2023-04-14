@@ -1,7 +1,7 @@
 package model
 
 import (
-	"ProblemFocus_Backend/pkg/dataBase/mysql"
+	"problemfocus_backend_user/pkg/dataBase/mysql"
 	"time"
 
 	"github.com/astaxie/beego/orm"

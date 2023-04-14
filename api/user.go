@@ -1,14 +1,21 @@
 package api
 
 import (
-	"ProblemFocus_Backend/internal/controller"
+	"problemfocus_backend_user/internal/controller"
 
 	"github.com/astaxie/beego"
 )
 
 func init() {
 	ns := beego.NewNamespace("/v1",
+		beego.NSNamespace("/signind",
+	
+	
+	
+	
+		),
 		beego.NSNamespace("/user",
+			
 			beego.NSRouter("/",&controller.UserController{},"post:InsertUser"),
 			// beego.NSRouter("/:id",&controller.UserController{},"delete:DeleteUserByID"),
 			// beego.NSRouter("/:id",&controller.UserController{},"put:UpdateUserByID"),

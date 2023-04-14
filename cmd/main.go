@@ -1,9 +1,9 @@
 package main
 
 import (
-	_ "ProblemFocus_Backend/api"
-	"ProblemFocus_Backend/pkg/dataBase/mysql"
-	"ProblemFocus_Backend/pkg/dataBase/redis"
+	_ "problemfocus_backend_user/api"
+	"problemfocus_backend_user/pkg/dataBase/mysql"
+	"problemfocus_backend_user/pkg/dataBase/redis"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/plugins/cors"
