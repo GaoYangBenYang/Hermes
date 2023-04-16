@@ -71,3 +71,13 @@ func InsertUser(user User) (int64,error) {
 		return 0, err
 	}
 }
+
+func SelectUserByPhoneNumberOrEmail(phone_number_or_email string) (password string,err error)  {
+	o := orm.NewOrm()
+	err = o.Raw(mysql.SelectUserByPhoneNumberOrEmail,phone_number_or_email,password).QueryRow(&password)
+	if err == nil {
+		return password,nil
+	} else {
+		return "",err
+	}
+}

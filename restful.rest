@@ -10,3 +10,11 @@ content-type: application/json
     "email": "gy@outlook.com",
     "password": "admin", 
 }
+
+###
+POST http://localhost:8080/v1/user/qegkg HTTP/1.1
+content-type: application/json
+
+{
+    "password": "admin", 
+}

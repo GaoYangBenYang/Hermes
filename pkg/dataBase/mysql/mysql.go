@@ -27,4 +27,6 @@ const (
 	SelectAllUserSQL = "select * from user"
 	//注册用户
 	InsertUser = "insert "
+	//根电话号码或者邮箱查询用户信息（登录）
+	SelectUserByPhoneNumberOrEmail = "select password from user where phone_number = ? or email = ?"
 )

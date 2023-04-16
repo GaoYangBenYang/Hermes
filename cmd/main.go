@@ -19,6 +19,7 @@ func main() {
 	if beego.BConfig.RunMode == "dev" {
 		beego.BConfig.WebConfig.DirectoryIndex = true
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
+		beego.SetLogFuncCall(true)
 	}
 	//CORS
 	//InsertFilter是提供一个过滤函数
