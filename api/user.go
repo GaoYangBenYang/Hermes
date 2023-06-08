@@ -1,7 +1,7 @@
 package api
 
 import (
-	"problemfocus_backend_user/internal/controller"
+	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/controller"
 
 	"github.com/astaxie/beego"
 )

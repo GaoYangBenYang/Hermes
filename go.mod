@@ -1,4 +1,4 @@
-module problemfocus_backend_user
+module github.com/GaoYangBenYang/problemfocus_backend_user
 
 go 1.20
 

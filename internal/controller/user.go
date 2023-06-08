@@ -2,9 +2,9 @@ package controller
 
 import (
 	"fmt"
-	"problemfocus_backend_user/internal/model"
-	"problemfocus_backend_user/internal/service"
-	"problemfocus_backend_user/pkg/utils"
+	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/model"
+	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/service"
+	"github.com/GaoYangBenYang/problemfocus_backend_user/pkg/utils"
 
 	"github.com/astaxie/beego"
 )

@@ -2,7 +2,7 @@ package service
 
 import (
 	"fmt"
-	"problemfocus_backend_user/internal/model"
+	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/model"
 )
 
 func SelectUserByPhoneNumberOrEmail(phone_number_or_email, password string) (error) {
