@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/model"
 	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/service"
-	"github.com/GaoYangBenYang/problemfocus_backend_user/pkg/utils"
+	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/utils"
 
 	"github.com/astaxie/beego"
 )
