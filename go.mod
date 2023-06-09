@@ -1,4 +1,4 @@
-module github.com/GaoYangBenYang/pfb
+module github.com/GaoYangBenYang/beego-project-example
 
 go 1.20
 
