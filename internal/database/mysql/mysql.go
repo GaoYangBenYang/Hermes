@@ -4,6 +4,9 @@ import (
 	"fmt"
 
 	"github.com/beego/beego/v2/client/orm"
+
+	"github.com/beego/beego/v2/core/config"
+	"github.com/beego/beego/v2/core/logs"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -17,9 +20,14 @@ const (
 	SelectUserByPhoneNumberOrEmail = "select password from user where phone_number = ? or email = ?"
 )
 
-func InitMySQL(MySQLDataSource string) {
+func InitMySQL() {
 	//注册驱动，由于mysql为默认数据库类型，直接使用orm.DBMySQL
 	orm.RegisterDriver("mysql", orm.DRMySQL)
+	//获取数据库配置
+	MySQLDataSource, configErr := config.String("MySQLDataSource")
+	if configErr != nil {
+		logs.Error(configErr)
+	}
 	//注册数据库，默认本地时区
 	orm.RegisterDataBase("default", "mysql", MySQLDataSource)
 	//获取*sql.DB

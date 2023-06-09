@@ -1,19 +1,17 @@
 package main
 
 import (
-	_ "github.com/GaoYangBenYang/pfb/internal/router"
 	"github.com/GaoYangBenYang/pfb/internal/database/mysql"
 	"github.com/GaoYangBenYang/pfb/internal/middleware/redis"
+	_ "github.com/GaoYangBenYang/pfb/internal/router"
 
 	beego "github.com/beego/beego/v2/server/web"
 	"github.com/beego/beego/v2/server/web/filter/cors"
 )
 
 func init() {
-	//获取数据库配置
-	const MySQLDataSource string = "root:123456@/problemfocus?charset=utf8"
 	//初始化MySQL
-	mysql.InitMySQL(MySQLDataSource)
+	mysql.InitMySQL()
 	//初始化Redis
 	redis.InitRedis()
 }

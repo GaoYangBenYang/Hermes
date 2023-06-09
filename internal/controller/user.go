@@ -6,7 +6,6 @@ import (
 	"github.com/GaoYangBenYang/pfb/internal/model/dto"
 	"github.com/GaoYangBenYang/pfb/internal/service"
 
-	
 	beego "github.com/beego/beego/v2/server/web"
 )
 
@@ -25,11 +24,11 @@ func (u *UserController) GetAllUser() {
 	}
 }
 
-func (u *UserController) SelectUserByPhoneNumberOrEmail()  {
-	phone_number_or_email :=u.Ctx.Input.Param(":phone_number_or_email")
+func (u *UserController) SelectUserByPhoneNumberOrEmail() {
+	phone_number_or_email := u.Ctx.Input.Param(":phone_number_or_email")
 	password := "wlthu"
-	fmt.Println(phone_number_or_email,password)
-	err := service.SelectUserByPhoneNumberOrEmail(phone_number_or_email,password)
+	fmt.Println(phone_number_or_email, password)
+	err := service.SelectUserByPhoneNumberOrEmail(phone_number_or_email, password)
 	if err == nil {
 		u.Data["json"] = dto.ResponseBody.Get200DataResponse(true)
 		u.ServeJSON()
@@ -39,14 +38,14 @@ func (u *UserController) SelectUserByPhoneNumberOrEmail()  {
 	}
 }
 
-func (u *UserController) InsertUser()  {
+func (u *UserController) InsertUser() {
 	// user:=model.NewUser("","","","","","","","")
-	// _,err := model.InsertUser(user) 
+	// _,err := model.InsertUser(user)
 	// if err == nil {
-		u.Data["json"] = dto.ResponseBody.Get200MessageResponse("注册成功!") 
-		u.ServeJSON()
+	u.Data["json"] = dto.ResponseBody.Get200MessageResponse("注册成功!")
+	u.ServeJSON()
 	// } else {
-	// 	u.Data["json"] = model.ResponseBody.Get404Response(err) 
+	// 	u.Data["json"] = model.ResponseBody.Get404Response(err)
 	// 	u.ServeJSON()
 	// }
 }

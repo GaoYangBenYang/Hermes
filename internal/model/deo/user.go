@@ -11,6 +11,7 @@ func init() {
 	//注册模型 相当于在数据库中自动建表
 	orm.RegisterModel(new(User))
 }
+
 /*
 属性名一定要与数据库名对应  大驼峰  tag中的db可写可不写，如果使用beego的orm框架并且不想使用默认Id为主键 那必须使用tag `orm:"pk"`
 */
@@ -36,25 +37,24 @@ type User struct {
 	UpdateTime time.Time `db:"update_time"`
 }
 
-
-func NewUser(uuid,userName,password,email,phoneNumber,avatar string,registrationTime,updateTime time.Time) *User {
+func NewUser(uuid, userName, password, email, phoneNumber, avatar string, registrationTime, updateTime time.Time) *User {
 	return &User{
-		UserId: 0,
-		Uuid: uuid,
-		UserName: userName,
-		Password: password,
-		Email: email,
-		PhoneNumber: phoneNumber,
-		Avatar: avatar,
+		UserId:           0,
+		Uuid:             uuid,
+		UserName:         userName,
+		Password:         password,
+		Email:            email,
+		PhoneNumber:      phoneNumber,
+		Avatar:           avatar,
 		RegistrationTime: registrationTime,
-		UpdateTime: updateTime,
+		UpdateTime:       updateTime,
 	}
 }
 
-func GetAllUser() ( []User , error){
+func GetAllUser() ([]User, error) {
 	o := orm.NewOrm()
 	var userSlice []User
-	_ , err := o.Raw(mysql.SelectAllUserSQL).QueryRows(&userSlice)
+	_, err := o.Raw(mysql.SelectAllUserSQL).QueryRows(&userSlice)
 	if err == nil {
 		return userSlice, nil
 	} else {
@@ -62,9 +62,9 @@ func GetAllUser() ( []User , error){
 	}
 }
 
-func InsertUser(user User) (int64,error) {
+func InsertUser(user User) (int64, error) {
 	o := orm.NewOrm()
-	id,err := o.Insert(&user)
+	id, err := o.Insert(&user)
 	if err == nil {
 		return id, nil
 	} else {
@@ -72,12 +72,12 @@ func InsertUser(user User) (int64,error) {
 	}
 }
 
-func SelectUserByPhoneNumberOrEmail(phone_number_or_email string) (password string,err error)  {
+func SelectUserByPhoneNumberOrEmail(phone_number_or_email string) (password string, err error) {
 	o := orm.NewOrm()
-	err = o.Raw(mysql.SelectUserByPhoneNumberOrEmail,phone_number_or_email,password).QueryRow(&password)
+	err = o.Raw(mysql.SelectUserByPhoneNumberOrEmail, phone_number_or_email, password).QueryRow(&password)
 	if err == nil {
-		return password,nil
+		return password, nil
 	} else {
-		return "",err
+		return "", err
 	}
 }
