@@ -1,25 +1,26 @@
 package main
 
 import (
-	_ "github.com/GaoYangBenYang/problemfocus_backend_user/api"
-	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/dataBase/mysql"
-	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/dataBase/redis"
+	_ "github.com/GaoYangBenYang/pfb/internal/router"
+	"github.com/GaoYangBenYang/pfb/internal/database/mysql"
+	"github.com/GaoYangBenYang/pfb/internal/middleware/redis"
 
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/plugins/cors"
+	beego "github.com/beego/beego/v2/server/web"
+	"github.com/beego/beego/v2/server/web/filter/cors"
 )
 
 func init() {
+	//获取数据库配置
+	const MySQLDataSource string = "root:123456@/problemfocus?charset=utf8"
 	//初始化MySQL
-	mysql.InitMySQLClient()
+	mysql.InitMySQL(MySQLDataSource)
 	//初始化Redis
-	redis.InitRedisClient()
+	redis.InitRedis()
 }
 func main() {
 	if beego.BConfig.RunMode == "dev" {
 		beego.BConfig.WebConfig.DirectoryIndex = true
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
-		beego.SetLogFuncCall(true)
 	}
 	//CORS
 	//InsertFilter是提供一个过滤函数

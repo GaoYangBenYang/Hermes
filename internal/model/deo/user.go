@@ -1,10 +1,10 @@
-package model
+package deo
 
 import (
-	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/dataBase/mysql"
+	"github.com/GaoYangBenYang/pfb/internal/database/mysql"
 	"time"
 
-	"github.com/astaxie/beego/orm"
+	"github.com/beego/beego/v2/client/orm"
 )
 
 func init() {

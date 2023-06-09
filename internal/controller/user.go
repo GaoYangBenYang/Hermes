@@ -2,11 +2,12 @@ package controller
 
 import (
 	"fmt"
-	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/model"
-	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/service"
-	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/utils"
+	"github.com/GaoYangBenYang/pfb/internal/model/deo"
+	"github.com/GaoYangBenYang/pfb/internal/model/dto"
+	"github.com/GaoYangBenYang/pfb/internal/service"
 
-	"github.com/astaxie/beego"
+	
+	beego "github.com/beego/beego/v2/server/web"
 )
 
 type UserController struct {
@@ -14,12 +15,12 @@ type UserController struct {
 }
 
 func (u *UserController) GetAllUser() {
-	userSlice, err := model.GetAllUser()
+	userSlice, err := deo.GetAllUser()
 	if err == nil {
-		u.Data["json"] = utils.ResponseBody.Get200DataResponse(userSlice)
+		u.Data["json"] = dto.ResponseBody.Get200DataResponse(userSlice)
 		u.ServeJSON()
 	} else {
-		u.Data["json"] = utils.ResponseBody.Get404Response(err)
+		u.Data["json"] = dto.ResponseBody.Get404Response(err)
 		u.ServeJSON()
 	}
 }
@@ -30,10 +31,10 @@ func (u *UserController) SelectUserByPhoneNumberOrEmail()  {
 	fmt.Println(phone_number_or_email,password)
 	err := service.SelectUserByPhoneNumberOrEmail(phone_number_or_email,password)
 	if err == nil {
-		u.Data["json"] = utils.ResponseBody.Get200DataResponse(true)
+		u.Data["json"] = dto.ResponseBody.Get200DataResponse(true)
 		u.ServeJSON()
 	} else {
-		u.Data["json"] = utils.ResponseBody.Get404Response(err)
+		u.Data["json"] = dto.ResponseBody.Get404Response(err)
 		u.ServeJSON()
 	}
 }
@@ -42,10 +43,10 @@ func (u *UserController) InsertUser()  {
 	// user:=model.NewUser("","","","","","","","")
 	// _,err := model.InsertUser(user) 
 	// if err == nil {
-		u.Data["json"] = utils.ResponseBody.Get200MessageResponse("注册成功!") 
+		u.Data["json"] = dto.ResponseBody.Get200MessageResponse("注册成功!") 
 		u.ServeJSON()
 	// } else {
-	// 	u.Data["json"] = utils.ResponseBody.Get404Response(err) 
+	// 	u.Data["json"] = model.ResponseBody.Get404Response(err) 
 	// 	u.ServeJSON()
 	// }
 }

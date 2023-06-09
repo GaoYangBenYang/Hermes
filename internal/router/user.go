@@ -1,9 +1,9 @@
 package api
 
 import (
-	"github.com/GaoYangBenYang/problemfocus_backend_user/internal/controller"
+	"github.com/GaoYangBenYang/pfb/internal/controller"
 
-	"github.com/astaxie/beego"
+	beego "github.com/beego/beego/v2/server/web"
 )
 
 func init() {

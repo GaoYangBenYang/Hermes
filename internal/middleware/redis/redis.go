@@ -10,7 +10,7 @@ import (
 var redisDB *redis.Client
 
 // 初始化连接
-func InitRedisClient() {
+func InitRedis() {
 	redisDB = redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "", // no password set
