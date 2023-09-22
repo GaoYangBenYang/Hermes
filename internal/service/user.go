@@ -2,7 +2,7 @@ package service
 
 import (
 	"fmt"
-	deo "github.com/GaoYangBenYang/beego-project-example/internal/model/deo"
+	deo "github.com/GaoYangBenYang/code-fixer/internal/model/deo"
 )
 
 func SelectUserByPhoneNumberOrEmail(phone_number_or_email, password string) error {

@@ -2,9 +2,9 @@ package controller
 
 import (
 	"fmt"
-	"github.com/GaoYangBenYang/beego-project-example/internal/model/deo"
-	"github.com/GaoYangBenYang/beego-project-example/internal/model/dto"
-	"github.com/GaoYangBenYang/beego-project-example/internal/service"
+	"github.com/GaoYangBenYang/code-fixer/internal/model/deo"
+	"github.com/GaoYangBenYang/code-fixer/internal/model/dto"
+	"github.com/GaoYangBenYang/code-fixer/internal/service"
 
 	beego "github.com/beego/beego/v2/server/web"
 )

@@ -1,7 +1,7 @@
 package api
 
 import (
-	"github.com/GaoYangBenYang/beego-project-example/internal/controller"
+	"github.com/GaoYangBenYang/code-fixer/internal/controller"
 
 	beego "github.com/beego/beego/v2/server/web"
 )
