@@ -1,7 +1,7 @@
 package deo
 
 import (
-	"github.com/GaoYangBenYang/beego-project-example/internal/database/mysql"
+	"github.com/GaoYangBenYang/code-fixer/internal/database/mysql"
 	"time"
 
 	"github.com/beego/beego/v2/client/orm"

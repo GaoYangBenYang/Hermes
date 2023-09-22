@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/GaoYangBenYang/beego-project-example/internal/database/mysql"
-	"github.com/GaoYangBenYang/beego-project-example/internal/middleware/redis"
-	_ "github.com/GaoYangBenYang/beego-project-example/internal/router"
+	"github.com/GaoYangBenYang/code-fixer/internal/database/mysql"
+	"github.com/GaoYangBenYang/code-fixer/internal/middleware/redis"
+	_ "github.com/GaoYangBenYang/code-fixer/internal/router"
 
 	beego "github.com/beego/beego/v2/server/web"
 	"github.com/beego/beego/v2/server/web/filter/cors"
