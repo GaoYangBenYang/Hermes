@@ -1,21 +1,89 @@
--- Active: 1681287635940@@127.0.0.1@3306@problemfocus
-
-CREATE DATABASE ProblemFocus
+-- Active: 1694646506791@@127.0.0.1@3306@codefixer
+CREATE DATABASE codefixer
     DEFAULT CHARACTER SET = 'utf8mb4';
 
 -- 1.用户模块
-CREATE TABLE user (
-  user_id INT AUTO_INCREMENT PRIMARY KEY COMMENT "用户ID,唯一标识符,自增长整数类型",
-  uuid CHAR(36) COMMENT "用户唯一标识符号",
-  user_name VARCHAR(50) NOT NULL UNIQUE COMMENT "用户名，字符串类型，不可重复",
-  password VARCHAR(255) NOT NULL COMMENT "密码，字符串类型，加密存储",
-  email VARCHAR(255) COMMENT "电子邮件地址，字符串类型",
-  phone_number VARCHAR(20) COMMENT "电话号码，字符串类型",
-  avatar VARCHAR(255) COMMENT "头像,字符串类型,存储头像的URL地址",
-  registration_time DATETIME COMMENT "注册时间，日期时间类型",
-  update_time DATETIME COMMENT "用户更新时间，可为空",
-  user_state INT(1) NOT NULL DEFAULT '1' COMMENT '用户账号状态(1正常0注销)' 
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT "用户表";
+create Table user (
+    user_id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT "用户ID",
+    user_uuid VARCHAR(255) COMMENT "uuid",
+    user_name VARCHAR(255) COMMENT "姓名",
+    user_sex CHAR(10) NULL COMMENT "性别",
+    user_birthday CHAR(20) NULL COMMENT "生日",
+    user_id_number CHAR(20) NULL COMMENT "身份证号",
+    user_location VARCHAR(255) NULL COMMENT "所在地",
+    user_school VARCHAR(255) NULL COMMENT "学校",
+    user_intro VARCHAR(255) NULL COMMENT "个人简介",
+    user_nick_name VARCHAR(255) NULL COMMENT "昵称",
+    user_telephone VARCHAR(255) NULL COMMENT "电话号码",
+    user_email VARCHAR(255) NULL COMMENT "邮箱",
+    user_password VARCHAR(255) NULL COMMENT "密码",
+    user_avatar VARCHAR(255) NULL COMMENT "头像图片地址",
+    user_create DATETIME DEFAULT NULL COMMENT "创建时间",
+    user_founder VARCHAR(64) DEFAULT NULL COMMENT "创建人",
+    user_edited DATETIME DEFAULT NULL COMMENT "修改时间",
+    user_modifier VARCHAR(64) DEFAULT NULL COMMENT "修改人",
+    user_state VARCHAR(20) NOT NULL DEFAULT 0 COMMENT "用户状态 0=正常 时间字符串=冻结结束日期",
+    user_delete INT(1) NOT NULL DEFAULT 0 COMMENT "逻辑删除:0=未删除,1=已删除"
+)engine = innoDB CHARACTER SET = utf8 COMMENT "用户表";
+
+create Table role (
+    role_id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT "角色ID",
+    role_code INT(10) DEFAULT NULL COMMENT '角色唯一代码',
+    role_name VARCHAR(64) DEFAULT NULL COMMENT "角色名称",
+    role_intro VARCHAR(64) DEFAULT NULL COMMENT "角色介绍",
+    role_create DATETIME DEFAULT NULL COMMENT "创建时间",
+    role_founder VARCHAR(64) DEFAULT NULL COMMENT "创建人",
+    role_edited DATETIME DEFAULT NULL COMMENT "修改时间",
+    role_modifier VARCHAR(64) DEFAULT NULL COMMENT "修改人",
+    role_delete INT(1) NOT NULL DEFAULT 0 COMMENT "逻辑删除:0=未删除,1=已删除"
+)engine = innoDB CHARACTER SET = utf8 COMMENT "角色表";
+
+create Table permission (
+    permission_id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT "权限ID",
+    permission_code varchar(255) DEFAULT NULL COMMENT '权限唯一代码',
+    permission_name varchar(255)  DEFAULT NULL COMMENT '权限名称',
+    permission_intro varchar(255)  DEFAULT NULL COMMENT '权限介绍',
+    permission_category tinyint(1) NULL DEFAULT NULL COMMENT '权限类别',
+    permission_uri bigint(20) NULL DEFAULT NULL COMMENT 'URL规则',
+    permission_create DATETIME DEFAULT NULL COMMENT "创建时间",
+    permission_founder VARCHAR(64) DEFAULT NULL COMMENT "创建人",
+    permission_edited DATETIME DEFAULT NULL COMMENT "修改时间",
+    permission_modifier VARCHAR(64) DEFAULT NULL COMMENT "修改人",
+    permission_delete INT(1) NOT NULL DEFAULT 0 COMMENT "逻辑删除:0=未删除,1=已删除"
+)engine = innoDB CHARACTER SET = utf8 COMMENT "权限表";
+
+create Table user_role (
+    user_role_id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT "用户角色ID",
+    user_id BIGINT DEFAULT NULL COMMENT '用户ID',
+    role_id BIGINT DEFAULT NULL COMMENT '角色ID',
+    user_create DATETIME DEFAULT NULL COMMENT "创建时间",
+    user_founder VARCHAR(64) DEFAULT NULL COMMENT "创建人",
+    user_edited DATETIME DEFAULT NULL COMMENT "修改时间",
+    user_modifier VARCHAR(64) DEFAULT NULL COMMENT "修改人",
+    user_delete INT(1) NOT NULL DEFAULT 0 COMMENT "逻辑删除:0=未删除,1=已删除"
+)engine = innoDB CHARACTER SET = utf8 COMMENT "用户-权限表";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- 2.提问模块
 CREATE TABLE question (
