@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/GaoYangBenYang/code-fixer/internal/database/mysql"
+	"github.com/GaoYangBenYang/code-fixer/internal/middleware/mysql"
 	"github.com/GaoYangBenYang/code-fixer/internal/middleware/redis"
 	_ "github.com/GaoYangBenYang/code-fixer/internal/router"
 
