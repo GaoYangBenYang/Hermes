@@ -1,40 +1,38 @@
 package mysql
 
 import (
-	"fmt"
+	"github.com/GaoYangBenYang/code-fixer/internal/config"
+	"log"
 
-	"github.com/beego/beego/v2/client/orm"
-
-	"github.com/beego/beego/v2/core/config"
-	"github.com/beego/beego/v2/core/logs"
-	_ "github.com/go-sql-driver/mysql"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+	"gorm.io/gorm/schema"
 )
 
-// 维护原生SQL语句
+// 声明一个全局的MySQL变量
+var MysqlDB *gorm.DB
+
+func InitMySQLClient() {
+	db, err := gorm.Open(mysql.New(mysql.Config{
+		DSN: config.Conf.MySQL.UserName+":"+config.Conf.MySQL.Password+"@tcp("+config.Conf.MySQL.Address+")/"+config.Conf.MySQL.DBName+"?charset=utf8&parseTime=True&loc=Local", // DSN data source name
+	}), &gorm.Config{
+		NamingStrategy: schema.NamingStrategy{
+			SingularTable: true, // 使用单数表名
+		},
+	})
+	if err != nil {
+		log.Println("MySQL连接失败!", err)
+	} else {
+		MysqlDB = db
+		log.Println("MySQL连接成功!")
+	}
+
+}
+
+// 原生SQL语句
 const (
 	//查询所有用户信息
-	SelectAllUserSQL = "select * from user"
-	//注册用户
-	InsertUser = "insert "
-	//根电话号码或者邮箱查询用户信息（登录）
-	SelectUserByPhoneNumberOrEmail = "select password from user where phone_number = ? or email = ?"
+	SelectAllUserInfoSQL = "select * from profile"
+	//根据电话号码查询用户信息
+	SelectUserInfoByPhoneNumberSQL = ""
 )
-
-func InitMySQL() {
-	//注册驱动，由于mysql为默认数据库类型，直接使用orm.DBMySQL
-	orm.RegisterDriver("mysql", orm.DRMySQL)
-	//获取数据库配置
-	MySQLDataSource, configErr := config.String("MySQLDataSource")
-	if configErr != nil {
-		logs.Error(configErr)
-	}
-	//注册数据库，默认本地时区
-	orm.RegisterDataBase("default", "mysql", MySQLDataSource)
-	//获取*sql.DB
-	_, err := orm.GetDB()
-	if err != nil {
-		fmt.Println("MySQL连接失败!", err)
-	} else {
-		fmt.Println("MySQL连接成功!")
-	}
-}

@@ -1,15 +1,8 @@
-package deo
+package model
 
 import (
-	"time"
 
-	"github.com/beego/beego/v2/client/orm"
 )
-
-func init() {
-	//注册模型 相当于在数据库中自动建表
-	orm.RegisterModel(new(User))
-}
 
 /*
 属性名一定要与数据库名对应  大驼峰  tag中的db可写可不写，如果使用beego的orm框架并且不想使用默认Id为主键 那必须使用tag `orm:"pk"`
@@ -36,6 +29,3 @@ type User struct {
 	UserDelete    int    `json:"user_delete" db:"user_delete"`       // 逻辑删除:0=未删除,1=已删除
 }
 
-func NewUser(uuid, userName, password, email, phoneNumber, avatar string, registrationTime, updateTime time.Time) *User {
-	return nil
-}

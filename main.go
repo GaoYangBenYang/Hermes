@@ -1,40 +1,30 @@
 package main
 
 import (
+	"github.com/GaoYangBenYang/code-fixer/internal/config"
 	"github.com/GaoYangBenYang/code-fixer/internal/middleware/mysql"
 	"github.com/GaoYangBenYang/code-fixer/internal/middleware/redis"
-	_ "github.com/GaoYangBenYang/code-fixer/internal/router"
+	"github.com/GaoYangBenYang/code-fixer/internal/router"
 
-	beego "github.com/beego/beego/v2/server/web"
-	"github.com/beego/beego/v2/server/web/filter/cors"
+	"github.com/gin-gonic/gin"
 )
 
-func init() {
-	//初始化MySQL
-	mysql.InitMySQL()
-	//初始化Redis
-	redis.InitRedis()
-}
 func main() {
-	if beego.BConfig.RunMode == "dev" {
-		beego.BConfig.WebConfig.DirectoryIndex = true
-		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
-	}
-	//CORS
-	//InsertFilter是提供一个过滤函数
-	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
-		//允许访问所有源
-		AllowAllOrigins: true,
-		//可选参数"GET", "POST", "PUT", "DELETE", "OPTIONS" (*为所有)
-		//其中Options为跨域复杂请求的预检
-		AllowMethods: []string{"*"},
-		//指的是允许的Header的种类
-		AllowHeaders: []string{"Content-Type", "Authorization", "X-Requested-With"},
-		//公开的HTTP标头列表
-		ExposeHeaders: []string{"Content-Length"},
-		//如果设置，则允许共享身份验证凭据，例如cookie
-		AllowCredentials: true,
-	}))
-	//开始监听端口
-	beego.Run("localhost")
+	//开发环境，默认开发模式
+	gin.SetMode(gin.DebugMode)
+	//默认返回一个Engine实例，其中已经附加了Logger和Recovery中间件。
+	r := gin.Default()
+	//读取配置文件
+	config.InitConfig()
+	//注册MySQL
+	mysql.InitMySQLClient()
+	//注册Redis
+	redis.InitRedisClient()
+	//注册Kafka
+	//注册自定义中间件(访问速率限制，访问处理时间，数据校验)
+
+	//注册路由
+	router.InitRouter(r)
+	//监听端口
+	r.Run(config.Conf.Application.Host + ":" + config.Conf.Application.Port)
 }
