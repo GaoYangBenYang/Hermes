@@ -16,9 +16,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>common</module>
-        <module>user</module>
-        <module>gateway</module>
+        <module>code-patch-common</module>
+        <module>code-patch-gateway</module>
+        <module>code-patch-services</module>
     </modules>
 
     <dependencyManagement>

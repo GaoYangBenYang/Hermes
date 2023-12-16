@@ -7,8 +7,7 @@
         <artifactId>code-patch-api</artifactId>
         <version>0.0.1</version>
     </parent>
-    <groupId>com.gaoyang</groupId>
-    <artifactId>gateway</artifactId>
+    <artifactId>code-patch-gateway</artifactId>
     <version>0.0.1</version>
     <description>网关服务</description>
     <properties>

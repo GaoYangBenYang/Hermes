@@ -1,5 +1,6 @@
 package com.gaoyang.user.controller;
 
+
 import com.gaoyang.common.pojo.User;
 import com.gaoyang.user.service.RegisterService;
 import lombok.extern.slf4j.Slf4j;
