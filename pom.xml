@@ -6,11 +6,11 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.5</version>
+        <version>3.2.0</version>
     </parent>
 
-    <groupId>com.gaoyang.code-fixer</groupId>
-    <artifactId>code-fixer-backend</artifactId>
+    <groupId>com.gaoyang.code-patch</groupId>
+    <artifactId>code-patch-api</artifactId>
     <version>0.0.1</version>
 
     <packaging>pom</packaging>
