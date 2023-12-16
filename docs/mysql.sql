@@ -1,4 +1,4 @@
-CREATE DATABASE code_fixer
+CREATE DATABASE code_patch
   DEFAULT CHARACTER SET = 'utf8mb4';
 
 -- 1.用户模块
@@ -22,11 +22,15 @@ create Table user (
   user_state VARCHAR(10) NOT NULL DEFAULT 0 COMMENT "用户状态 0=正常 时间字符串=冻结结束日期",
   user_delete TINYINT(1) NOT NULL DEFAULT 0 COMMENT "逻辑删除:0=未删除,1=已删除"
 )engine = innoDB CHARACTER SET = utf8 COMMENT "用户表";
+
 insert into user
 (user_uuid, user_name, user_sex, user_birthday, user_id_number, user_location, user_school, user_intro, user_nick_name, user_telephone,
  user_email, user_password, user_avatar)
 VALUES ("c2913757-9a8d-4148-88f6-49eb24cdd76a", "高洋", "男", "1999-02-03", "421022199902039999", "192.168.1.1", "xxx大学", "这是个人简介",
-        "陨墨", "12354654879", "12125465464@qq.com", "123123", "")
+        "陨墨", "12354654879", "12125465464@qq.com", "123123", "");
+
+select *
+from user;
 
 create Table role (
   role_id INT PRIMARY KEY AUTO_INCREMENT COMMENT "角色ID",

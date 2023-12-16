@@ -2,7 +2,7 @@ server:
   port: 8083
 spring:
   application:
-    name: gateway-service
+    name: service-gateway
   cloud:
     nacos:
       discovery:

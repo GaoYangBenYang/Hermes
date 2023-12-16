@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.0</version>
+        <version>3.1.5</version>
     </parent>
 
     <groupId>com.gaoyang.code-patch</groupId>
@@ -18,7 +18,7 @@
     <modules>
         <module>code-patch-common</module>
         <module>code-patch-gateway</module>
-        <module>code-patch-services</module>
+        <module>code-patch-service-user</module>
     </modules>
 
     <dependencyManagement>

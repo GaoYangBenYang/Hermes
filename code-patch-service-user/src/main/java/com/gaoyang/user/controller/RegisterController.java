@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/signup")
 @Slf4j
 public class RegisterController {
+
     @Autowired
     private RegisterService registerService;
 
