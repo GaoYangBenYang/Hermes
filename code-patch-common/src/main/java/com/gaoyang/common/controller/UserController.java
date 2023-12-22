@@ -3,10 +3,7 @@ package com.gaoyang.common.controller;
 import com.gaoyang.common.pojo.User;
 import com.gaoyang.common.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -15,6 +12,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/{id}")
+    @ResponseBody
     public User getUserById(@PathVariable Integer id) {
         return userService.getUserById(id);
     }

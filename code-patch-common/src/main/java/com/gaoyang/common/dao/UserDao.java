@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface UserDao {
-    @Select("select * from code_fixer.user where user_id = #{id}")
+    @Select("select * from code_patch_common.user where id = #{id}")
     User getUserById(Integer id);
 }

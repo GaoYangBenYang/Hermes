@@ -6,13 +6,13 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: localhost:8848
         username: nacos
         password: nacos
     sentinel:
       transport:
         port: 9999 #控制台交流端口
-        dashboard: 127.0.0.1:8080 #控制台地址
+        dashboard: localhost:8080 #控制台地址
     gateway:
       discovery:
         locator:
