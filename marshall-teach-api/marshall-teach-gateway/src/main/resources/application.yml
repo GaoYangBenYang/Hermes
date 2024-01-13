@@ -1,0 +1,35 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+    sentinel:
+      transport:
+        port: 9999 #控制台交流端口
+        dashboard: localhost:8080 #控制台地址
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启从nacos中发现服务
+      routes: #路由参数(指定当前请求满足什么条件后转发到哪个微服务)
+        - id: common #当前路由的唯一标识
+          uri: lb://common-service #请求最终转发地址,lb指从nacos中按照名称获取微服务，并且遵循负载均衡
+          order: 1 #路由的优先级
+          predicates: #断言(转发请求要满足的条件)
+            - Path=/common-service/** #当请求满足指定规则 才会正常转发
+          filters: #过滤器(再请求传递过程中，对请求做一些手脚)
+            - StripPrefix=1 #请求转发之前去掉一层路径
+
+        - id: user #当前路由的唯一标识
+          uri: lb://user-service #请求最终转发地址,lb指从nacos中按照名称获取微服务，并且遵循负载均衡
+          order: 1 #路由的优先级
+          predicates: #断言(转发请求要满足的条件)
+            - Path=/user-service/** #当请求满足指定规则 才会正常转发
+          filters: #过滤器(再请求传递过程中，对请求做一些手脚)
+            - StripPrefix=1 #请求转发之前去掉一层路径
