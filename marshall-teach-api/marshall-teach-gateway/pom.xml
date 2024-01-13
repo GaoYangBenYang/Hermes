@@ -3,16 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.gaoyang.code-patch</groupId>
-        <artifactId>code-patch-api</artifactId>
+        <groupId>com.gaoyang.marshall-teach</groupId>
+        <artifactId>marshall-teach-api</artifactId>
         <version>0.0.1</version>
     </parent>
-    <artifactId>code-patch-gateway</artifactId>
+    <artifactId>marshall-teach-gateway</artifactId>
     <version>0.0.1</version>
     <description>网关服务</description>
-    <properties>
-        <java.version>21</java.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -27,19 +24,5 @@
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <image>
-                        <builder>paketobuildpacks/builder-jammy-base:latest</builder>
-                    </image>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

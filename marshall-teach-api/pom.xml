@@ -9,16 +9,20 @@
         <version>3.1.5</version>
     </parent>
 
-    <groupId>com.gaoyang.code-patch</groupId>
-    <artifactId>code-patch-api</artifactId>
+    <groupId>com.gaoyang.marshall-teach</groupId>
+    <artifactId>marshall-teach-api</artifactId>
     <version>0.0.1</version>
+
+    <properties>
+        <java.version>21</java.version>
+    </properties>
 
     <packaging>pom</packaging>
 
     <modules>
-        <module>code-patch-common</module>
-        <module>code-patch-gateway</module>
-        <module>code-patch-service-user</module>
+        <module>marshall-teach-common</module>
+        <module>marshall-teach-gateway</module>
+        <module>marshall-teach-service-user</module>
     </modules>
 
     <dependencyManagement>

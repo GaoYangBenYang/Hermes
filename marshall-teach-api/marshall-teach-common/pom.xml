@@ -3,18 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.gaoyang.code-patch</groupId>
-        <artifactId>code-patch-api</artifactId>
-        <version>0.0.1</version>
-    </parent>
+   <parent>
+       <groupId>com.gaoyang.marshall-teach</groupId>
+       <artifactId>marshall-teach-api</artifactId>
+       <version>0.0.1</version>
+   </parent>
 
-    <artifactId>code-patch-common</artifactId>
+    <artifactId>marshall-teach-common</artifactId>
     <version>0.0.1</version>
     <description>公共模块</description>
-    <properties>
-        <java.version>21</java.version>
-    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
