@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
    <parent>
-       <groupId>com.gaoyang.marshall-teach</groupId>
-       <artifactId>marshall-teach-api</artifactId>
+       <groupId>com.gaoyang.marshall</groupId>
+       <artifactId>marshall-api</artifactId>
        <version>0.0.1</version>
    </parent>
 
-    <artifactId>marshall-teach-common</artifactId>
+    <artifactId>marshall-common</artifactId>
     <version>0.0.1</version>
     <description>公共模块</description>
 
