@@ -9,8 +9,8 @@
         <version>3.1.5</version>
     </parent>
 
-    <groupId>com.gaoyang.marshall-teach</groupId>
-    <artifactId>marshall-teach-api</artifactId>
+    <groupId>com.gaoyang.marshall</groupId>
+    <artifactId>marshall-api</artifactId>
     <version>0.0.1</version>
 
     <properties>
@@ -20,9 +20,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>marshall-teach-common</module>
-        <module>marshall-teach-gateway</module>
-        <module>marshall-teach-service-user</module>
+        <module>marshall-common</module>
+        <module>marshall-gateway</module>
+        <module>marshall-service-user</module>
     </modules>
 
     <dependencyManagement>

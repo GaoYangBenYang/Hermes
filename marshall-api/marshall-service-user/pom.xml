@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.gaoyang.marshall-teach</groupId>
-        <artifactId>marshall-teach-api</artifactId>
+        <groupId>com.gaoyang.marshall</groupId>
+        <artifactId>marshall-api</artifactId>
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>marshall-teach-service-user</artifactId>
+    <artifactId>marshall-service-user</artifactId>
     <version>0.0.1</version>
 
     <description>用户模块</description>
@@ -16,8 +16,8 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.gaoyang.marshall-teach</groupId>
-            <artifactId>marshall-teach-common</artifactId>
+            <groupId>com.gaoyang.marshall</groupId>
+            <artifactId>marshall-common</artifactId>
             <version>0.0.1</version>
         </dependency>
 
