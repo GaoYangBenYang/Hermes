@@ -1,10 +1,10 @@
-package com.gaoyang.arthas;
+package com.gaoyang.hermes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ArthasApiApplicationTests {
+class HermesApplicationTests {
 
     @Test
     void contextLoads() {
