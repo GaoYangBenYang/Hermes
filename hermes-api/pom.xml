@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.gaoyang</groupId>
-    <artifactId>arthas-api</artifactId>
+    <artifactId>hermes-api</artifactId>
     <version>0.0.1</version>
-    <name>arthas-api</name>
-    <description>arthas-api</description>
+    <name>hermes-api</name>
+    <description>hermes-api</description>
     <properties>
         <java.version>21</java.version>
     </properties>
