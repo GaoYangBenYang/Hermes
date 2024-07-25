@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "serve": "vite",
+    "HermesApplication": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
